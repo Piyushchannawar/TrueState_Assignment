@@ -12,7 +12,7 @@ This project provides a clean UI to view sales, apply filters, search, paginate,
 
 ## Live Demo Links
 
-### **Frontend Live App**  
+### **Frontend Live App** (If it shows no data refresh it will show.)
 https://true-state-assignment-amber.vercel.app/
 
 ### **Backend API**  
