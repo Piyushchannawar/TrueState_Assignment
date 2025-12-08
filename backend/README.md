@@ -65,10 +65,13 @@ Fetch paginated + filtered sales data.
 Below are screenshots of API requests made in **Postman** to verify backend functionality.
 
 ### 1. Basic GET request (first 10 records)
-
+<img width="1614" height="1107" alt="image" src="https://github.com/user-attachments/assets/9f811ee6-2d1e-42ec-badc-85e1f951bce5" />
 
 ### 2. Search request by customer name
+<img width="1651" height="1126" alt="image" src="https://github.com/user-attachments/assets/28bbba1c-e026-45d0-a1fb-19d58a69f4bb" />
 
 ### 3. Filter by region & gender
+<img width="1595" height="1108" alt="image" src="https://github.com/user-attachments/assets/000b16db-d531-420e-a130-b7cbc0357368" />
 
 ### 4. Pagination test
+<img width="1617" height="1139" alt="image" src="https://github.com/user-attachments/assets/4efde08d-1c8d-4906-881c-1d20145829c6" />
