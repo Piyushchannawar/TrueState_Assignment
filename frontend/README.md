@@ -1,16 +1,102 @@
-# React + Vite
+# TrueState Assignment — Frontend
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+This is the **frontend application** for the TrueState Sales Analytics Dashboard.  
+It is built using **React + Vite**, styled with **Tailwind CSS**, and communicates with the backend using **Axios**.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Demo
+**Frontend Deployment:** https://true-state-assignment-amber.vercel.app/  
+**Backend API:** https://truestate-assignment-iqlf.onrender.com/api/sales
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Features
 
-## Expanding the ESLint configuration
+- **Search** by name or phone number  
+- **Multi-filtering** (Region, Gender, Age Range, Category, Tags, Payment Method)  
+- **Reset Filters** button  
+- **Statistics Cards**  
+- **Pagination with sliding window**  
+- **Beautiful UI** with TailwindCSS  
+- **Axios + Backend Integration**  
+- **Fast Vite-powered development**
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+---
+
+## Tech Stack
+
+### **Frontend**
+- React.js  
+- Vite  
+- Tailwind CSS  
+- HeroIcons  
+- Axios  
+- Headless UI (Combobox filters)
+
+---
+
+## Folder Structure
+
+```
+frontend/
+├── src/
+│   ├── components/
+│   │   ├── Filters.jsx
+│   │   ├── TopBar.jsx
+│   │   ├── StatsCards.jsx
+│   │   ├── SalesTable.jsx
+│   │   ├── Pagination.jsx
+│   │
+│   ├── pages/
+│   │   └── Dashboard.jsx
+│   │
+│   ├── services/
+│   │   └── api.js
+│   │
+│   ├── App.jsx
+│   └── main.jsx
+│
+├── public/
+├── package.json
+└── vite.config.js
+```
+
+---
+
+## Environment Variables
+
+Create a `.env` file in the **frontend root**:
+
+```
+VITE_API_BASE="https://truestate-assignment-iqlf.onrender.com/api"
+```
+
+This ensures your frontend can call your deployed backend.
+
+---
+
+## API Integration (Axios)
+
+We use a reusable Axios instance:
+
+```js
+import axios from "axios";
+
+const API = axios.create({
+  baseURL: import.meta.env.VITE_API_BASE || "http://localhost:8080/api",
+  timeout: 15000,
+});
+
+export const getSales = (filters) =>
+  API.get("/sales", {
+    params: {
+      ...filters,
+      region: filters.region.join(","),
+      gender: filters.gender.join(","),
+      category: filters.category.join(","),
+      tags: filters.tags.join(","),
+      payment: filters.payment.join(","),
+    },
+  });
+```
